@@ -21,6 +21,11 @@
                 window.scroll(0,0)
                 this.menu = false;
             },
+            goToBitQr(){
+                router.push('/app/bit_qrcode')
+                window.scroll(0,0)
+                this.menu = false;
+            },
             logOut(){
                 localStorage.removeItem('access')
                 localStorage.removeItem('refresh')
@@ -55,6 +60,9 @@
                 </div>
                 <div class="pl-[10px] rounded-[10px] font-inter font-[400] text-[20px] leading-[22px] py-[10px] hover:border-r-[8px] hover:border-[#BC07FF]">
                     Pricing Plan
+                </div>
+                <div @click="goToBitQr" class="pl-[10px] rounded-[10px] font-inter font-[400] text-[20px] leading-[22px] py-[10px] hover:border-r-[8px] hover:border-[#BC07FF]">
+                    Bit QrCode
                 </div>
                 <!--logout-->
                 <div class="pt-[40px]"></div>

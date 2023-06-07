@@ -44,6 +44,12 @@ const router = createRouter({
       //@ts-ignore
       component: () => import('../views/app/HistoryPage.vue')
     },
+    {
+      path: '/app/bit_qrcode',
+      name: 'bitQrcode',
+      //@ts-ignore
+      component: () => import('../views/app/BitQrcode.vue')
+    },
   ]
 })
 
