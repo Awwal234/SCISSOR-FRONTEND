@@ -8,7 +8,6 @@ import VueQrcode from 'vue-qrcode'
 const linkTitle = ref('')
 const qrValue = ref('https://example.com')
 const qrCode = ref(false)
-const qrCodeColor = ref('black')
 const router = useRouter()
 
 const powerQr=()=>{ 
