@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import api from '../../api/client'
 import router from '../../router/index'
@@ -11,11 +11,14 @@ export default defineComponent({
     },
     methods: {
         togglePassword(){
+            //@ts-ignore
             const passwordInput = document.getElementById('password').type
             console.log(passwordInput)
             if(passwordInput == 'password'){
+                //@ts-ignore
                 document.getElementById('password').type = 'text'
             }else{
+                //@ts-ignore
                 document.getElementById('password').type = 'password'
             }
         },
