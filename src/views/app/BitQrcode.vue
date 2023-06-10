@@ -39,7 +39,7 @@ onMounted(()=>{
                 Bitly Link
             </div>
             <div class="pb-[25px]">
-                <input @keyup="clearQr" v-model="linkTitle" placeholder="bit.ly/example" type="test" class=" w-full text-[20px] font-inter font-[200] leading-[27.9px] py-[15px] px-[11px] mt-[12px] border focus:outline-none"/>
+                <input @keyup="clearQr" v-model="linkTitle" placeholder="bit.ly/example" type="test" class="w-full text-[20px] font-inter font-[200] leading-[27.9px] py-[15px] px-[11px] mt-[12px] border focus:outline-none"/>
             </div>
             <ButtonBlue @click="powerQr" class="bg-[#0E43FF] border border-[#000] text-[#fff]" button-text="Generate QrCode"/>
             <div v-show="qrCode" class="mx-auto w-[75%] h-fit mt-[100px]">
