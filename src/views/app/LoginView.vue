@@ -52,16 +52,16 @@ export default defineComponent({
             <div>Login</div>
         </div>
         <!--form-->
-            <div class="mt-[104px] text-[#000] font-inter text-[20px] leading-[27.9px]">
+            <div class="mt-[60px] text-[#000] font-inter text-[20px] leading-[27.9px]">
                 <label for="email">Email</label>
             </div>
-            <input v-model="email" type="email" id="email" autocomplete="off" class="mt-[10px] bg-[#fff] w-full py-[15px] px-[21px] font-inter text-[20px] focus:outline-none" placeholder="youremail@gmail.com"/>
+            <input v-model="email" type="email" id="email" autocomplete="off" class="mt-[10px] bg-[#fff] w-full py-[10px] px-[21px] font-inter text-[16px] focus:outline-none" placeholder="youremail@gmail.com"/>
             <!--pswd input-->
             <div class="mt-[26px] text-[#000] font-inter text-[20px] leading-[27.9px]">
                 <label for="password">Password</label>
             </div>
             <div class="flex items-center w-full">
-                <input v-model="password" type="password" id="password" autocomplete="off" class="mt-[10px] bg-[#fff] w-full py-[15px] px-[21px] font-inter text-[20px] focus:outline-none"/>
+                <input v-model="password" type="password" id="password" autocomplete="off" class="mt-[10px] bg-[#fff] w-full py-[10px] px-[21px] font-inter text-[16px] focus:outline-none"/>
                 <div class="w-fit">
                     <img src="/img/eyeOff.svg" @click="togglePassword" class="absolute mt-[-5px] right-[50px]" alt=""/>
                 </div>
