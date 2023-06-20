@@ -9,6 +9,7 @@ export default defineComponent({
             email: '',
             password: '',
             error: false,
+            error_title: 'Error Signing up. Try again'
         }
     },
     methods: {
@@ -29,18 +30,26 @@ export default defineComponent({
             window.scroll(0, 0)
         },
         async signUpVerify(){
-            try{
-                const res = await api.post('/auth/signup',
-                {
-                    name: this.name,
-                    email: this.email,
-                    password: this.password
-                });
-                console.log(res.data)
-                router.push('/login')
-            }catch(err){
-                console.log(err)
+            if((this.name.length > 1) && (this.email.length > 1) && (this.password.length == 6)){
+                try{
+                    const res = await api.post('/auth/signup',
+                    {
+                        name: this.name,
+                        email: this.email,
+                        password: this.password
+                    });
+                    console.log(res.data)
+                    router.push('/login')
+                }catch(err){
+                    console.log(err)
+                    this.error = true;
+                    setTimeout(()=>{
+                        this.error = false;
+                    }, 4000)
+                }
+            }else {
                 this.error = true;
+                this.error_title = 'Complete the task inputs'
                 setTimeout(()=>{
                     this.error = false;
                 }, 4000)
@@ -79,7 +88,7 @@ export default defineComponent({
             </div>
             <!--error spot-->
             <div v-show="error" class="w-[100%] bg-red-600 text-[14px] mt-[8px] font-inter text-[#fff] py-[3px] px-[8px]">
-                Error Signing up. Try again
+                {{error_title}}
             </div>
             <!--end--> 
             <!--button-->
