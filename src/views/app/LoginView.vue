@@ -7,6 +7,7 @@ export default defineComponent({
         return{
             email: '',
             password: '',
+            error: false,
         }
     },
     methods: {
@@ -39,6 +40,10 @@ export default defineComponent({
                 router.push('/app')
             }catch(err){
                 console.log(err)
+                this.error = true;
+                setTimeout(()=>{
+                    this.error = false;
+                }, 4000)
             }
         },
     }
@@ -65,6 +70,10 @@ export default defineComponent({
                 <div class="w-fit">
                     <img src="/img/eyeOff.svg" @click="togglePassword" class="absolute mt-[-5px] right-[50px]" alt=""/>
                 </div>
+            </div>
+            <!--error spot-->
+            <div v-show="error" class="w-[100%] bg-red-600 text-[14px] mt-[8px] font-inter text-[#fff] py-[3px] px-[8px]">
+                Login credentials invalid.
             </div>
             <!--end-->
             <div class="flex mt-[13px] justify-between">

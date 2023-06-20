@@ -8,7 +8,7 @@ export default defineComponent({
             name: '',
             email: '',
             password: '',
-            banner: false,
+            error: false,
         }
     },
     methods: {
@@ -37,15 +37,13 @@ export default defineComponent({
                     password: this.password
                 });
                 console.log(res.data)
-                this.banner = true
-                setTimeout(()=>{
-                    this.banner = false
-                }, 1000)
-                setTimeout(()=>{
-                    router.push('/login')
-                }, 2000)
+                router.push('/login')
             }catch(err){
                 console.log(err)
+                this.error = true;
+                setTimeout(()=>{
+                    this.error = false;
+                }, 4000)
             }
         },
     }
@@ -54,9 +52,6 @@ export default defineComponent({
 
 <template>
     <main class="bg-[#fff] px-[27px]">
-        <div v-show="banner" class="top-[10px] font-anton font-[400] text-[20px] bg-green-900 text-[#fff] py-[13.5px] px-[11px] overflow-x-hidden w-[80%] border absolute">
-            Signup successfully !!
-        </div>
         <div class="w-[270px] text-[#000] mt-[98px] font-anton text-[32px] leading-[44.65px]">
             Sign up  to get
             <div>started</div>
@@ -81,6 +76,10 @@ export default defineComponent({
                 <div class="w-fit">
                     <img src="/img/eyeOff.svg" @click="togglePassword" class="absolute mt-[-5px] right-[50px]" alt=""/>
                 </div>
+            </div>
+            <!--error spot-->
+            <div v-show="error" class="w-[100%] bg-red-600 text-[14px] mt-[8px] font-inter text-[#fff] py-[3px] px-[8px]">
+                Error Signing up. Try again
             </div>
             <!--end--> 
             <!--button-->

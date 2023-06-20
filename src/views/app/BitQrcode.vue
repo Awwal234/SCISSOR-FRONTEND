@@ -1,5 +1,6 @@
 <script setup lang="ts">
 //eslint-disbale-next-line no-unused-vars
+import html2canvas from 'html2canvas';
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import HeaderApp from '../../components/backup/HeaderApp.vue'
@@ -27,6 +28,21 @@ const authCheck = () => {
     }
 }
 
+const downloadBtn=()=>{
+    const qrCodeContainer = document.getElementById('qrCodeContainer');
+      
+    //@ts-ignore
+    html2canvas(qrCodeContainer).then(canvas => {
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
+    link.download = 'qrcode.png';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+}
+
 onMounted(()=>{
     authCheck();
 })
@@ -43,9 +59,10 @@ onMounted(()=>{
                 <input @keyup="clearQr" v-model="linkTitle" placeholder="bit.ly/example" type="test" class="w-full text-[20px] font-inter font-[200] leading-[27.9px] py-[15px] px-[11px] mt-[12px] border focus:outline-none"/>
             </div>
             <ButtonBlue @click="powerQr" class="bg-[#0E43FF] border border-[#000] text-[#fff]" button-text="Generate QrCode"/>
-            <div v-show="qrCode" class="mx-auto w-[75%] h-fit mt-[100px]">
-                <vue-qrcode class="w-full h-[250px]" :color="{ dark: '#000000ff', light: '#ffffffff' }" :value="qrValue" type="image/png"/>
+            <div v-show="qrCode" id="qrCodeContainer" class="mx-auto w-[75%] h-fit mt-[30px]">
+                <vue-qrcode id="canvas" class="w-full h-[250px]" :color="{ dark: '#000000ff', light: '#ffffffff' }" :value="qrValue" type="image/png"/>
             </div>
+            <button v-show="qrCode" class="mt-[20px] text-center w-full py-[7px] font-inter text-[18px] bg-[transparent] border border-[#000] text-[#000]" @click="downloadBtn">Download QR Code</button>
         </div>
     </main>
 </template>
